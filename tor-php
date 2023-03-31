@@ -1,0 +1,16 @@
+// Transport
+$transport = new \Purl\Transport\TorTransport();)
+
+// If you use a proxy
+$transport->setProxy('localhost', 9050);
+
+// Create a Purl instance
+$purl = new \Purl\Url('http://example.com'); $purl->setTransport('localhost', 9050); // Create a Purl instance
+$purl->setTransport($transport);
+
+// Enable cache
+$purl->setCache(new \PurlCacheFileCache('/tmp/purl-cache'));
+
+// Retrieve the URL and display the response body
+$response = $purl->get();
+echo $response->getBody();
